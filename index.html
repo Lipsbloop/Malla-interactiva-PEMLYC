@@ -7,17 +7,29 @@
 <style>
   body {
     font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
   }
   .semester {
-    margin: 20px;
+    margin: 20px auto;
     border: 2px solid #444;
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 800px;
+    max-width: 900px;
   }
   .semester h2 {
-    width: 100%;
+    margin-top: 0;
+    border-bottom: 2px solid #d36e9d;
+    padding-bottom: 5px;
+    color: #d36e9d;
+  }
+  .courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
   }
   .course {
     cursor: pointer;
@@ -25,11 +37,11 @@
     background-color: #d36e9d;
     color: #000;
     padding: 10px;
-    margin: 5px;
     min-width: 180px;
     text-align: center;
     user-select: none;
     transition: background-color 0.3s, color 0.3s;
+    border-radius: 6px;
   }
   .course.approved {
     background-color: #f6d5e7; /* rosado pastel */
@@ -51,24 +63,124 @@
 
 <div id="malla">
 
+  <!-- 1° año -->
   <div class="semester" data-semester="1">
     <h2>1° semestre</h2>
-    <div class="course" data-id="EDUCACION_Y_SOCIEDAD">EDUCACIÓN Y SOCIEDAD</div>
-    <div class="course" data-id="LIT_UNIVERSAL_ANTIGUA">LITERATURA UNIVERSAL ANTIGUA Y MEDIEVAL</div>
-    <div class="course" data-id="TALLER_LECTURA_I">TALLER DE LECTURA Y ESCRITURA I</div>
-    <div class="course" data-id="LINGUISTICA_GENERAL">LINGÜÍSTICA GENERAL</div>
-    <div class="course" data-id="TEORIA_COMUNICACION">TEORÍA DE LA COMUNICACIÓN</div>
-    <div class="course" data-id="FUNDAMENTOS_FILOSOFICOS">FUNDAMENTOS FILOSÓFICOS</div>
+    <div class="courses-container">
+      <div class="course" data-id="EDUCACION_Y_SOCIEDAD">EDUCACIÓN Y SOCIEDAD</div>
+      <div class="course" data-id="LIT_UNIVERSAL_ANTIGUA">LITERATURA UNIVERSAL ANTIGUA Y MEDIEVAL</div>
+      <div class="course" data-id="TALLER_LECTURA_I">TALLER DE LECTURA Y ESCRITURA I</div>
+      <div class="course" data-id="LINGUISTICA_GENERAL">LINGÜÍSTICA GENERAL</div>
+      <div class="course" data-id="TEORIA_COMUNICACION">TEORÍA DE LA COMUNICACIÓN</div>
+      <div class="course" data-id="FUNDAMENTOS_FILOSOFICOS">FUNDAMENTOS FILOSÓFICOS</div>
+    </div>
   </div>
 
   <div class="semester" data-semester="2">
     <h2>2° semestre</h2>
-    <div class="course locked" data-id="APRENDIZAJE_DESARROLLO_HUMANO" data-prereq="EDUCACION_Y_SOCIEDAD">APRENDIZAJE Y DESARROLLO HUMANO</div>
-    <div class="course locked" data-id="LIT_UNIVERSAL_MODERNA" data-prereq="LIT_UNIVERSAL_ANTIGUA">LITERATURA UNIVERSAL MODERNA Y CONTEMPORÁNEA</div>
-    <div class="course locked" data-id="TALLER_LECTURA_II" data-prereq="TALLER_LECTURA_I">TALLER DE LECTURA Y ESCRITURA II</div>
-    <div class="course locked" data-id="GRAMATICA_COMUNICATIVA_I" data-prereq="LINGUISTICA_GENERAL">GRAMÁTICA COMUNICATIVA I</div>
-    <div class="course locked" data-id="MEDIOS_COMUNICACION" data-prereq="TEORIA_COMUNICACION">MEDIOS DE COMUNICACIÓN Y CULTURA DIGITAL</div>
-    <div class="course locked" data-id="COMUNICACION_INGLES">COMUNICACIÓN EN INGLÉS</div>
+    <div class="courses-container">
+      <div class="course" data-id="APRENDIZAJE_DESARROLLO_HUMANO" data-prereq="EDUCACION_Y_SOCIEDAD">APRENDIZAJE Y DESARROLLO HUMANO</div>
+      <div class="course" data-id="LIT_UNIVERSAL_MODERNA" data-prereq="LIT_UNIVERSAL_ANTIGUA">LITERATURA UNIVERSAL MODERNA Y CONTEMPORÁNEA</div>
+      <div class="course" data-id="TALLER_LECTURA_II" data-prereq="TALLER_LECTURA_I">TALLER DE LECTURA Y ESCRITURA II</div>
+      <div class="course" data-id="GRAMATICA_COMUNICATIVA_I" data-prereq="LINGUISTICA_GENERAL">GRAMÁTICA COMUNICATIVA I</div>
+      <div class="course" data-id="MEDIOS_COMUNICACION" data-prereq="TEORIA_COMUNICACION">MEDIOS DE COMUNICACIÓN Y CULTURA DIGITAL</div>
+      <div class="course" data-id="COMUNICACION_INGLES">COMUNICACIÓN EN INGLÉS</div>
+    </div>
+  </div>
+
+  <!-- 2° año -->
+  <div class="semester" data-semester="3">
+    <h2>3° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="PERSPECTIVAS_CURRICULARES" data-prereq="APRENDIZAJE_DESARROLLO_HUMANO">PERSPECTIVAS CURRICULARES EN EDUCACIÓN</div>
+      <div class="course" data-id="GENERO_NARRATIVO" data-prereq="LIT_UNIVERSAL_MODERNA">GÉNERO NARRATIVO</div>
+      <div class="course" data-id="GENERO_DRAMATICO" data-prereq="LIT_UNIVERSAL_MODERNA">GÉNERO DRAMÁTICO</div>
+      <div class="course" data-id="GRAMATICA_COMUNICATIVA_II" data-prereq="GRAMATICA_COMUNICATIVA_I">GRAMÁTICA COMUNICATIVA II</div>
+      <div class="course" data-id="TALLER_ORALIDAD" data-prereq="TALLER_LECTURA_II">TALLER DE ORALIDAD</div>
+      <div class="course" data-id="COMUNICACION_TEATRAL" data-prereq="GENERO_DRAMATICO">COMUNICACIÓN TEATRAL</div>
+    </div>
+  </div>
+
+  <div class="semester" data-semester="4">
+    <h2>4° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="EVALUACION_APRENDIZAJE" data-prereq="PERSPECTIVAS_CURRICULARES">EVALUACIÓN PARA EL APRENDIZAJE</div>
+      <div class="course" data-id="FUND_INVESTIGACION" data-prereq="PERSPECTIVAS_CURRICULARES">FUNDAMENTOS DE LA INVESTIGACIÓN EDUCATIVA</div>
+      <div class="course" data-id="GENERO_LIRICO" data-prereq="GENERO_NARRATIVO">GÉNERO LÍRICO</div>
+      <div class="course" data-id="TALLER_ESCRITURA_CREATIVA" data-prereq="TALLER_ORALIDAD">TALLER DE ESCRITURA CREATIVA</div>
+      <div class="course" data-id="FONETICA_FONOLOGIA" data-prereq="GRAMATICA_COMUNICATIVA_II">FONÉTICA Y FONOLOGÍA</div>
+      <div class="course" data-id="FUNDAMENTOS_TEOLÓGICOS" data-prereq="FUNDAMENTOS_FILOSOFICOS">FUNDAMENTOS TEOLÓGICOS</div>
+    </div>
+  </div>
+
+  <!-- 3° año -->
+  <div class="semester" data-semester="5">
+    <h2>5° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="INCLUSION_CONTEXTOS" data-prereq="EVALUACION_APRENDIZAJE">INCLUSIÓN EN CONTEXTOS EDUCATIVOS</div>
+      <div class="course" data-id="LIT_HISPANOAM_COLONIAL" data-prereq="LIT_UNIVERSAL_MODERNA">LITERATURA HISPANOAMERICANA COLONIAL Y MODERNA</div>
+      <div class="course" data-id="CLASICOS_LIT_ESP" data-prereq="LIT_UNIVERSAL_MODERNA">CLÁSICOS DE LA LITERATURA ESPAÑOLA</div>
+      <div class="course" data-id="LINGUISTICA_TEXTO" data-prereq="GRAMATICA_COMUNICATIVA_II">LINGÜÍSTICA DEL TEXTO</div>
+      <div class="course" data-id="INTEGRACION_SABER" data-prereq="PERSPECTIVAS_CURRICULARES">INTEGRACIÓN DEL SABER</div>
+      <div class="course" data-id="PRACTICA_PEDAGOGICA_I" data-prereq="APRENDIZAJE_DESARROLLO_HUMANO">PRÁCTICA PEDAGÓGICA I</div>
+    </div>
+  </div>
+
+  <div class="semester" data-semester="6">
+    <h2>6° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="PLANIFICACION_CURRICULUM" data-prereq="INCLUSION_CONTEXTOS">PLANIFICACIÓN DEL CURRÍCULUM Y EVALUACIÓN DE LOS APRENDIZAJES</div>
+      <div class="course" data-id="LIT_HISPANOAM_CONTEMP" data-prereq="LIT_HISPANOAM_COLONIAL">LITERATURA HISPANOAMERICANA CONTEMPORÁNEA</div>
+      <div class="course" data-id="TEORIA_CRITICA_LIT" data-prereq="CLASICOS_LIT_ESP">TEORÍA Y CRÍTICA LITERARIA</div>
+      <div class="course" data-id="LENGUA_SOCIEDAD" data-prereq="LINGUISTICA_TEXTO">LENGUA Y SOCIEDAD</div>
+      <div class="course" data-id="MODELOS_COMPRENSION" data-prereq="LINGUISTICA_TEXTO">MODELOS DE COMPRENSIÓN Y PRODUCCIÓN DE TEXTOS</div>
+      <div class="course" data-id="PRACTICA_PEDAGOGICA_II" data-prereq="PRACTICA_PEDAGOGICA_I">PRÁCTICA PEDAGÓGICA II</div>
+    </div>
+  </div>
+
+  <!-- 4° año -->
+  <div class="semester" data-semester="7">
+    <h2>7° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="POLITICA_GESTION" data-prereq="PLANIFICACION_CURRICULUM">POLÍTICA Y GESTIÓN EDUCATIVA</div>
+      <div class="course" data-id="CLASICOS_NARRATIVA_CHILE" data-prereq="LIT_HISPANOAM_CONTEMP">CLÁSICOS DE LA NARRATIVA CHILENA</div>
+      <div class="course" data-id="ANALISIS_DISCURSO" data-prereq="LENGUA_SOCIEDAD">ANÁLISIS DEL DISCURSO</div>
+      <div class="course" data-id="SEMANTICA_PRAGMATICA" data-prereq="LENGUA_SOCIEDAD">SEMÁNTICA Y PRAGMÁTICA</div>
+      <div class="course" data-id="OPTATIVO_PROFUNDIZACION_7" data-prereq="PLANIFICACION_CURRICULUM">OPTATIVO DE PROFUNDIZACIÓN</div>
+      <div class="course" data-id="PRACTICA_PEDAGOGICA_III" data-prereq="PRACTICA_PEDAGOGICA_II">PRÁCTICA PEDAGÓGICA III</div>
+    </div>
+  </div>
+
+  <div class="semester" data-semester="8">
+    <h2>8° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="DISENO_INVESTIGACION" data-prereq="PLANIFICACION_CURRICULUM">DISEÑO DE LA INVESTIGACIÓN EDUCATIVA</div>
+      <div class="course" data-id="CLASICOS_LIRICA_CHILE" data-prereq="CLASICOS_NARRATIVA_CHILE">CLÁSICOS DE LA LÍRICA CHILENA</div>
+      <div class="course" data-id="DIDACTICA_COMP_PROD_I" data-prereq="ANALISIS_DISCURSO">DIDÁCTICA DE LA COMPRENSIÓN Y LA PRODUCCIÓN I</div>
+      <div class="course" data-id="INTEGRACION_SABER_8" data-prereq="INTEGRACION_SABER">INTEGRACIÓN DEL SABER</div>
+      <div class="course" data-id="ETICA_PROFESIONAL" data-prereq="OPTATIVO_PROFUNDIZACION_7">ÉTICA PROFESIONAL</div>
+      <div class="course" data-id="PRACTICA_PEDAGOGICA_IV" data-prereq="PRACTICA_PEDAGOGICA_III">PRÁCTICA PEDAGÓGICA IV</div>
+    </div>
+  </div>
+
+  <!-- 5° año -->
+  <div class="semester" data-semester="9">
+    <h2>9° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="INVESTIGACION_PRACTICA" data-prereq="DISENO_INVESTIGACION">INVESTIGACIÓN EN LA PRÁCTICA EDUCATIVA</div>
+      <div class="course" data-id="DIDACTICA_LITERATURA" data-prereq="DIDACTICA_COMP_PROD_I">DIDÁCTICA DE LA LITERATURA</div>
+      <div class="course" data-id="REDACCION_DISCURSO_CIENTIFICO" data-prereq="INVESTIGACION_PRACTICA">REDACCIÓN DEL DISCURSO CIENTÍFICO</div>
+      <div class="course" data-id="DIDACTICA_COMP_PROD_II" data-prereq="DIDACTICA_COMP_PROD_I">DIDÁCTICA DE LA COMPRENSIÓN Y LA PRODUCCIÓN II</div>
+      <div class="course" data-id="OPTATIVO_PROFUNDIZACION_9" data-prereq="OPTATIVO_PROFUNDIZACION_7">OPTATIVO DE PROFUNDIZACIÓN</div>
+      <div class="course" data-id="PRACTICA_PEDAGOGICA_V" data-prereq="PRACTICA_PEDAGOGICA_IV">PRÁCTICA PEDAGÓGICA V</div>
+    </div>
+  </div>
+
+  <div class="semester" data-semester="10">
+    <h2>10° semestre</h2>
+    <div class="courses-container">
+      <div class="course" data-id="PRACTICA_PROFESIONAL" data-prereq="PRACTICA_PEDAGOGICA_V">PRÁCTICA PROFESIONAL</div>
+    </div>
   </div>
 
 </div>
