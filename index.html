@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva</title>
+  <style>
+    body { font-family: sans-serif; background: #f5f5f5; padding: 2rem; }
+    .semestre { margin-bottom: 2rem; }
+    .semestre h2 { margin-bottom: 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+    .ramo {
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      background-color: pink;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+    .aprobado {
+      background-color: #d3d3d3;
+      text-decoration: line-through;
+      color: #666;
+    }
+    .bloqueado {
+      background-color: #ccc;
+      color: #888;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="semestre">
+    <h2>1° Semestre</h2>
+    <div class="grid">
+      <div class="ramo" data-id="educacion" onclick="toggle(this)">Educación y Sociedad</div>
+      <div class="ramo" data-id="lit1">Literatura Universal Antigua y Medieval</div>
+      <div class="ramo" data-id="taller">Taller de Lectura y Escritura I</div>
+      <div class="ramo" data-id="ling">Lingüística General</div>
+      <div class="ramo" data-id="comunicacion">Teoría de la Comunicación</div>
+      <div class="ramo" data-id="filosofia">Fundamentos Filosóficos</div>
+    </div>
+  </div>
+
+  <script>
+    const prereqs = {
+      'taller2': ['taller'], // ejemplo futuro
+    };
+
+    function toggle(elem) {
+      if (elem.classList.contains('bloqueado')) return;
+      elem.classList.toggle('aprobado');
+      updateBloqueados();
+    }
+
+    function updateBloqueados() {
+      document.querySelectorAll('.ramo').forEach(ramo => {
+        const id = ramo.dataset.id;
+        const requisitos = prereqs[id] || [];
+        const aprobados = requisitos.every(pr => {
+          const req = document.querySelector(`.ramo[data-id="${pr}"]`);
+          return req && req.classList.contains('aprobado');
+        });
+
+        if (requisitos.length > 0 && !aprobados) {
+          ramo.classList.add('bloqueado');
+        } else {
+          ramo.classList.remove('bloqueado');
+        }
+      });
+    }
+
+    updateBloqueados();
+  </script>
+
+</body>
+</html>
